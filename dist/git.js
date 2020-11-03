@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.lastCommit = exports.push = exports.commit = void 0;
 const shelljs_1 = require("shelljs");
 exports.commit = (message, name = "Upptime Bot", email = "upptime@koj.co") => {
     shelljs_1.exec(`git config --global user.email "${email}"`);

@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateSummary = void 0;
 const rest_1 = require("@octokit/rest");
 const slugify_1 = __importDefault(require("@sindresorhus/slugify"));
 const fs_extra_1 = require("fs-extra");

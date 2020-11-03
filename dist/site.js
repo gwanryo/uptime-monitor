@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.generateSite = void 0;
 const shelljs_1 = require("shelljs");
 exports.generateSite = async () => {
     const siteDir = "site";

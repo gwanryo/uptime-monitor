@@ -3,7 +3,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.update = void 0;
 const rest_1 = require("@octokit/rest");
 const slugify_1 = __importDefault(require("@sindresorhus/slugify"));
 const fs_extra_1 = require("fs-extra");
@@ -86,13 +85,13 @@ exports.update = async (shouldCommit = false) => {
                 await fs_extra_1.writeFile(path_1.join(".", "history", `${slug}.yml`), content);
                 git_1.commit(((config.commitMessages || {}).statusChange ||
                     "$EMOJI $SITE_NAME is $STATUS ($RESPONSE_CODE in $RESPONSE_TIME ms) [skip ci] [upptime]")
-                    .replace(new RegExp("$EMOJI", "g"), status === "up" ? "🟩" : "🟥")
-                    .replace(new RegExp("$SITE_NAME", "g"), site.name)
-                    .replace(new RegExp("$SITE_URL", "g"), site.url)
-                    .replace(new RegExp("$SITE_METHOD", "g"), site.method || "GET")
-                    .replace(new RegExp("$STATUS", "g"), status)
-                    .replace(new RegExp("$RESPONSE_CODE", "g"), result.httpCode.toString())
-                    .replace(new RegExp("$RESPONSE_TIME", "g"), responseTime), (config.commitMessages || {}).commitAuthorName, (config.commitMessages || {}).commitAuthorEmail);
+                    .replace("$EMOJI", status === "up" ? "🟩" : "🟥")
+                    .replace("$SITE_NAME", site.name)
+                    .replace("$SITE_URL", site.url)
+                    .replace("$SITE_METHOD", site.method || "GET")
+                    .replace("$STATUS", status)
+                    .replace("$RESPONSE_CODE", result.httpCode.toString())
+                    .replace("$RESPONSE_TIME", responseTime), (config.commitMessages || {}).commitAuthorName, (config.commitMessages || {}).commitAuthorEmail);
                 const lastCommitSha = git_1.lastCommit();
                 if (currentStatus !== status) {
                     console.log("Status is different", currentStatus, "to", status);
